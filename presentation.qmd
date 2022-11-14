@@ -1,0 +1,219 @@
+---
+title: Object Oriented Programming (OOP)
+format: revealjs
+jupyter: python3
+execute: 
+  echo: true
+author: Ibrahim Alghrabi
+---
+
+
+# Outline 
+1. Introduction.
+    a. Class
+    b. Object
+2. \_\_init\_\_ method.
+3. Other methods.
+4. Inheritance.
+5. Summary.
+
+
+# Introduction
+* OOP is a programming paradigm use the idea of **objects**. 
+* Object contains data and code.
+* Data in a shape of attributes, or properties.
+* Code in shape of procedure (also called methods or functions)
+* All of C++, Java, and Python programming languages support OOP.  
+
+
+# Class
+* Contains the blueprints from which the objects are being created. 
+* A logical entity contains some attributes and methods.
+
+```{python}
+class Car:
+    pass
+``` 
+* ```pass``` keyword is just place holder to run the code without error. 
+
+
+# Object 
+* An object is an entity that has a state (Data) and behavior (methods) associated with it, and consist of: 
+    1. State: Shows the property of an object.
+    2. Behavior: Shows the response of an object to other objects.
+    3. Identity: give unique name to an object. 
+
+
+# \_\_init\_\_ method &  instance attributes. {.smaller}
+* Now lets give car object some properties (attributes) using ``__init__ `` method.
+```{python}
+class Car:
+    def __init__(self, name, mileage_m, color):
+        self.name = name
+        self.mileage_m = mileage_m
+        self.color = color
+```
+* The first parameter in the method must always be  ``self``. It will automatically be passed when creating a new object with new attributes.
+* name, mileage_m, and color are called instance attributes because they are created inside the ``__init__``
+
+# \_\_init\_\_ method & class attributes.
+
+```{python}
+class Car:
+    year = 2019
+    def __init__(self, name, mileage_m, color):
+        self.name = name
+        self.mileage_m = mileage_m
+        self.color = color
+```
+* ``year`` is called class attributes. Class attributes is used to define properties that have the same value for every object in this class. 
+
+# \_\_init\_\_ method & validation. {.smaller}
+
+* Lets say we want to ensure that attributes be of certain type:
+    1. name as string
+    2. mileage_m as float
+    3. color as string
+
+```{python}
+class Car:
+    year = 2019
+    def __init__(self, name: str,
+     mileage_m: float, 
+     color: str):
+        self.name = name
+        self.mileage_m = mileage_m
+        self.color = color
+```
+
+# \_\_init\_\_ method & validation. {.smaller}
+
+* We would like to receive arguments that met certain condition, and return an error message of our choice. 
+* We can do that with keyword ``assert``
+
+```{python}
+class Car:
+    year = 2019
+    def __init__(self, name: str,
+     mileage_m: float, 
+     color: str):
+        #validation
+        assert mileage_m >= 0, f"{mileage_m} cannot be negative."
+
+        #attributes
+        self.name = name
+        self.mileage_m = mileage_m
+        self.color = color
+```
+
+
+# Other methods.
+* Let define other methods:
+```{python}
+class Car:
+    year = 2019
+    def __init__(self, name: str,mileage_m: float, color: str):
+        #validation
+        assert mileage_m >= 0, f"{mileage_m} cannot be negative."
+
+        #attributes
+        self.name = name
+        self.mileage_m = mileage_m
+        self.color = color
+
+    def describe(self):
+        return f"{self.name} has mileage of {self.mileage_m} mile, and its color is {self.color}, made in {self.year}."
+
+    def to_km(self):
+        return f"The mileage in km :{self.mileage_m * 1.6}"      
+```
+\ 
+```{python}
+obj1 = Car("Mazda", 20000, "white")
+```
+
+
+# Other methods
+* First lets define a car:
+```{python}
+obj1 = Car("Mazda", 20000, "white")
+```
+* Lets gets a description of the this car:
+```{python}
+obj1.describe()
+```
+* What is the mileage in kilo meter ?
+```{python}
+obj1.to_km()
+```
+
+
+# Inheritance
+* Process by which one class takes on the attributes and methods of aother class. 
+* The new fromed classes are called **child classes**, and the classes which the child classes were derived from are called **parent classes**.
+* Child classes inherit all parent's attributes and methods but they can also **extend** and **override** attributes.
+
+# Inheritance: Parent class.
+```{python}
+# Parent class
+class Person:
+    def __init__(self,name,idnum):
+        self.name = name
+        self.idnum = idnum
+    
+    def display(self):
+        print(self.name)
+        print(self.idnum)
+
+    def details(self):
+        print(f"My name is: {self.name}")
+        print(f"ID num: {self.idnum}")
+
+```
+
+# Inheritance: Child class.
+```{python}
+# Child class
+class Employee(Person):
+    # two new attributes
+    def __init__(self,name,idnum,salary,post):
+        # Super function will give us access 
+        # to all attributes and methods
+        super().__init__(name, idnum)
+        # new attributes
+        self.salary = salary
+        self.post = post
+
+    def details(self):
+        print(f"My name is: {self.name}")
+        print(f"ID num: {self.idnum}")
+        print(f"Salary = {self.salary} SR")    
+```
+# Inheritance: Example.
+
+* Define an object in the child class:
+```{python}
+emp1 = Employee('Ahmed', 29102, 5000, "Intern")
+```
+
+* Method from parent class
+```{python}
+emp1.display() 
+``` 
+* Method from parent class and updated in child class
+```{python}
+emp1.details() 
+```
+
+# Summary
+* OOP uses the concept of objects which have attributes and methods.
+* \_\_init\_\_ methods is used to define the attributes of an object.
+* A class can inherit the attributes and methods of another class using the `super()` function.
+
+# Thank you For Listening
+* Any Questions?
+
+# Referance: 
+1. https://www.youtube.com/watch?v=Ej_02ICOIgs
+2. https://realpython.com/python3-object-oriented-programming/
+3. https://www.geeksforgeeks.org/python-oops-concepts/

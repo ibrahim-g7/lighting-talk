@@ -4,7 +4,7 @@ This is an assignment given by Misk Foundation Data Science Program. The task is
 # Lighting Talk Assignment About OOP
 This repo provides brief documents about **object oriented programming** in python, this document will give brief introduction about OOP, and define what are classes and objects. Then proceeds to give examples of a \_\_init\_\_ constructor methods, self made methods, and finally inheratince of classes. 
 
-To show thre presentation click [here]()
+To show thre presentation click [here](https://ibrahim-g7.github.io/lighting-talk-oop/src/presentation.html#/title-slide)
 
 # Referance
 1. [freeCodeCamp](https://www.youtube.com/watch?v=Ej_02ICOIgs) video.
